@@ -2,7 +2,7 @@
   (:use [scad-clj.scad])
   (:use [scad-clj.model]))
 
-(def heart 
+(def like-heart 
   (union
     (->> (cylinder 100 100)
          (translate [100 75 0]))
@@ -44,7 +44,7 @@
          (translate [40 85 30]))))     
   
 (defn heart-coords []
-  (for [t (range -3 3.1 0.01)] 
+  (for [t (range (-(Math/PI)) (Math/PI) 0.01)] 
     (let [x (* 16 (Math/pow (Math/sin t) 3))
           y (- (* 13 (Math/cos t)) 
                (* 5 (Math/cos (* 2 t))) 
@@ -59,8 +59,6 @@
         (->> (sphere 2)
              (color [r g b 1])
              (translate [x y z]))))))
-               
-
 
 
 (spit "post-demo.scad"
